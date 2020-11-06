@@ -1,0 +1,18 @@
+# Project exclude paths
+/.gradle/
+/bear-auth/build/
+/bear-auth/build/classes/java/main/
+/bear-common/bear-client/build/
+/bear-common/bear-client/build/classes/java/main/
+/bear-common/bear-core/build/
+/bear-common/bear-core/build/classes/java/main/
+/bear-common/bear-security-starter/build/
+/bear-common/bear-security-starter/build/classes/java/main/
+/bear-gateway/build/
+/bear-gateway/build/classes/java/main/
+/bear-register/build/
+/bear-register/build/classes/java/main/
+/bear-server/bear-server-system/build/
+/bear-server/bear-server-system/build/classes/java/main/
+/bear-server/bear-server-test/build/
+/bear-server/bear-server-test/build/classes/java/main/

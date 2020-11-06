@@ -1,0 +1,13 @@
+bear:
+  auth:
+    access-token-validity-seconds: 86400
+    refresh-token-validity-seconds: 604800
+    clients:
+      - client: test
+        secret: 123456
+        grantType: password,authorization_code,refresh_token
+        scop: all
+      - client: bear
+        secret: 123456
+        grantType: password,authorization_code,refresh_token
+        scop: all

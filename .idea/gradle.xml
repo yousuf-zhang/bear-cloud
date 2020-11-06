@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="D:/gradle-6.4.1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/bear-apm" />
+            <option value="$PROJECT_DIR$/bear-auth" />
+            <option value="$PROJECT_DIR$/bear-common" />
+            <option value="$PROJECT_DIR$/bear-common/bear-client" />
+            <option value="$PROJECT_DIR$/bear-common/bear-core" />
+            <option value="$PROJECT_DIR$/bear-common/bear-security-starter" />
+            <option value="$PROJECT_DIR$/bear-gateway" />
+            <option value="$PROJECT_DIR$/bear-register" />
+            <option value="$PROJECT_DIR$/bear-server" />
+            <option value="$PROJECT_DIR$/bear-server/bear-server-system" />
+            <option value="$PROJECT_DIR$/bear-server/bear-server-test" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

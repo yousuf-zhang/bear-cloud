@@ -1,0 +1,76 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE' apply false
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE' apply false
+    id 'java'
+}
+
+ext {
+    set('springCloudAlibabaVersion', "2.2.2.RELEASE")
+    set('springCloudVersion', "Hoxton.SR8")
+    set("commonProjects", subprojects.find{it.name.startsWith("bear-common")}.subprojects)
+    println "$commonProjects"
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+    group = 'com.vastmoon.bear'
+    version = '0.0.1-SNAPSHOT'
+}
+subprojects {
+    apply plugin: "java"
+    apply plugin: "io.spring.dependency-management"
+    sourceCompatibility = '1.8'
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+    test {
+        useJUnitPlatform()
+    }
+    dependencyManagement {
+        imports {
+            mavenBom SpringBootPlugin.BOM_COORDINATES
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+        dependencies {
+            dependency("org.apache.commons:commons-lang3:3.11")
+            dependency("org.apache.commons:commons-collections4:4.4")
+            dependency("cn.hutool:hutool-all:5.1.4")
+            dependency("com.github.ulisesbocchio:jasypt-spring-boot:3.0.2")
+        }
+
+        generatedPomCustomization {
+            enabled = false
+        }
+    }
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
+}
+configure(subprojects - commonProjects) {
+    dependencies {
+//        implementation project(":bear-common:bear-core")
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-data-redis")
+        implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+    }
+}
+configure(subprojects - project(":bear-common:bear-client")) {
+    dependencies {
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+        implementation("org.apache.commons:commons-collections4")
+        implementation("cn.hutool:hutool-all")
+        implementation("org.apache.commons:commons-lang3")
+        implementation("com.google.guava:guava")
+    }
+}
